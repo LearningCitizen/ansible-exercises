@@ -1,0 +1,6 @@
+---
+- name: Use role 
+  hosts: node-1
+  
+  roles:
+    - 
