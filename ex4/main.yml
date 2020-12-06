@@ -1,0 +1,20 @@
+---
+- name: set maintenance message
+  hosts: g0
+  pre_tasks:
+    - name: set a messgae
+      copy:
+        dest: /etc/motd.d/maintenance
+        content: "Site in maintenance"
+  post_tasks:
+    - name: delete file
+      file:
+        path: "/etc/motd.d/maintenance"
+        state: absent
+      notify: check
+
+
+  handlers:
+    - name: Print
+        - debug: Handler called
+      listen: check

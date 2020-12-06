@@ -1,0 +1,16 @@
+---
+- name : Install haproxy and Checks
+  hosts: g0
+  tasks:
+    - block:
+        - name: install haproxy
+          yum:
+            name:
+              - haproxy
+            state: present
+        - name: Ensure haproxu is installed
+          service:
+            name: haproxy
+            state: started
+            enabled: true
+      become: true

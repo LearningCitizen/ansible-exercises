@@ -1,0 +1,12 @@
+---
+- name: uninstall haproxy
+  hosts: g0
+  become: true
+  tasks:
+    - service:
+        name: haproxy
+        state: stopped
+    - yum:
+        name: haproxy
+        state: absent
+        
