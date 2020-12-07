@@ -2,19 +2,26 @@
 - name: set maintenance message
   hosts: g0
   pre_tasks:
+    - name: create folder motd.d
+      file:
+        path: /etc/motd.d/
+        state: directory
+      become: true
     - name: set a messgae
       copy:
         dest: /etc/motd.d/maintenance
         content: "Site in maintenance"
+      become: true
   post_tasks:
     - name: delete file
       file:
         path: "/etc/motd.d/maintenance"
         state: absent
       notify: check
-
-
+      become: true
+  
   handlers:
     - name: Print
-        - debug: Handler called
+      debug: 
+        msg: "Handler called"
       listen: check
