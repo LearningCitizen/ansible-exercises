@@ -1,0 +1,11 @@
+---
+- name: test Google uri
+  hosts: g0
+  tasks:
+    - name: test Google url
+      uri:
+        url: "https://www.google.com"
+        return_content: yes
+      register: this
+      tags: 
+        - test
