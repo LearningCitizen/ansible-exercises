@@ -1,0 +1,11 @@
+---
+- name: uninstall packets
+  hosts: g0
+  tasks:
+    - yum:
+        name:
+          - php
+          - httpd
+          - mariadb
+        state: absent
+      become: true

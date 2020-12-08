@@ -1,0 +1,14 @@
+---
+- name: install yum packets
+  hosts: g0
+  gather_facts: false
+  tasks:
+    - name: install softwares
+      yum:
+        name:
+          - mariadb
+          - php
+          - httpd
+        state: present
+      become: true
+

@@ -1,0 +1,14 @@
+---
+- name: install yum packets
+  hosts: g0
+  tasks:
+    - name: install softwares
+      yum:
+        name: "{{ item }}"       
+        state: present
+      loop:
+        - php
+        - mariadb
+        - httpd
+      become: true
+
