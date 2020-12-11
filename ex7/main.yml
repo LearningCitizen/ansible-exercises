@@ -1,0 +1,14 @@
+---
+- name: install packages
+  hosts: g0
+  vars:
+    apache_base_packages:
+      - httpd
+    apache_optional_packages: []
+    apache_package_list: ""
+  tasks:
+    - name: install packages
+      yum:
+        name: "{{  }}"
+        state: present
+    
