@@ -7,5 +7,6 @@
           - php
           - httpd
           - mariadb
+          - git
         state: absent
       become: true

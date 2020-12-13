@@ -4,11 +4,11 @@
   vars:
     apache_base_packages:
       - httpd
-    apache_optional_packages: []
-    apache_package_list: ""
+    apache_optional_packages: ['git']
+    apache_package_list: "{{ apache_base_packages|union(apache_optional_packages) }}"
   tasks:
     - name: install packages
       yum:
-        name: "{{  }}"
+        name: "{{ apache_package_list }}"
         state: present
-    
+      become: true
