@@ -1,0 +1,11 @@
+---
+- name: read files
+  hosts: g0
+  tasks:
+    - name: read file1
+      debug:
+        msg:
+          - "lookup/file : {{ lookup('file', 'file1') }}"
+          - "lookup/lines : {{ lookup('lines', 'cat file1') }}"
+          - "query/file : {{ query('file', 'file1') }}"
+          - "query/lines : {{ query('lines', 'cat file1') }}"
