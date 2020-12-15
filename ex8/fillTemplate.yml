@@ -1,0 +1,10 @@
+---
+- name: Fill template
+  hosts: g0
+  vars:
+    lang: "{{ lookup('env', 'LANG') }}"
+  tasks:
+    - debug:
+        msg:
+          - " lang: {{ lang }}"
+          - "{{ lookup('template', 'templates/lang.j2') }}" 
