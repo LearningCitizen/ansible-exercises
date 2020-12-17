@@ -1,0 +1,25 @@
+---
+- name: create users
+  hosts: g0
+  gather_facts: no
+  tasks:
+    - name: display users
+      debug: 
+        msg:
+          - "{{ item }}"
+      with_dict: "{{ users }}"
+    - name: create group
+      group:
+        name: "{{ item.value.group}}"
+        state: present
+      with_dict: "{{ users }}"
+      become: true
+    - name: create users
+      user:
+        name: "{{ item.key }}"
+        group: "{{ item.value.group}}"
+        state: present
+      with_dict: "{{ users }}"
+      become: true
+
+
