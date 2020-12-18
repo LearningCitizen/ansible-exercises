@@ -1,0 +1,14 @@
+---
+- name: display files
+  hosts: g0
+  tasks:
+    - debug:
+        msg: "withlist : {{ item }}"
+      with_file:
+        - file1
+        - file2
+        - file3
+
+    - debug:
+        msg: "loop : {{ item }}"
+      loop: "{{ query('file', 'file1', 'file2', 'file3') }}"

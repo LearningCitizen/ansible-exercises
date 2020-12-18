@@ -7,19 +7,17 @@
       debug: 
         msg:
           - "{{ item }}"
-      with_dict: "{{ users }}"
-    - name: create group
-      group:
-        name: "{{ item.value.group}}"
-        state: present
-      with_dict: "{{ users }}"
-      become: true
-    - name: create users
+      loop: "{{ users|dict2items }}"
+    - name: delete users
       user:
         name: "{{ item.key }}"
         group: "{{ item.value.group}}"
         state: present
-      with_dict: "{{ users }}"
+      loop: "{{ users|dict2items }}"
       become: true
-
-
+    - name: delete group
+      group:
+        name: "{{ item.value.group}}"
+        state: present
+      loop: "{{ users|dict2items }}"
+      become: true
