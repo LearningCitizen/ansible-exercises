@@ -1,0 +1,12 @@
+---
+- name: serial 
+  hosts: g0
+  serial: 1
+  max_fail_percentage: 30%
+  tasks: 
+    - name: task 1
+      debug:
+        msg: "task 1"
+    - name: task 2
+      debug:
+        msg: "task 2"
