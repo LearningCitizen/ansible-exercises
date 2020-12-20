@@ -1,0 +1,13 @@
+---
+- name: delegation
+  hosts: g0
+  tasks:
+    - name : ask date
+      command: date
+      register: date_system
+    - name: create file
+      copy: 
+        dest: "/tmp/times.txt"
+        content: "{{ ansible_facts['hostname'] }} date_system"
+      delegate_to : localhost
+      
