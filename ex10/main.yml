@@ -1,0 +1,8 @@
+- name : network
+  hosts: g0
+  tasks:
+    - name : display ipv4
+      debug:
+        msg: 
+          - "ipv4: {{ ansible_facts['default_ipv4']['address'] | ipaddr}}"
+          - "revdns {{ ansible_facts['default_ipv4']['address'] | ipaddr('revdns')}}"

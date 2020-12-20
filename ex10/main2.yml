@@ -1,0 +1,7 @@
+- name : network
+  hosts: g0
+  tasks:
+    - name : display ipv4
+      debug:
+        msg: 
+          - "{{ ansible_facts }}"
